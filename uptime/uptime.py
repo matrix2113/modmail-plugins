@@ -7,8 +7,14 @@ class uptime(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.bot.launch_time = datetime.utcnow()
+        
+    @commands.group(name="Uptime", invoke_without_command=True)
+    async def testing(self, ctx):
+        """Uptime Command"""
 
-     @commands.command()
+        await ctx.send_help(ctx.command)
+        
+     @Uptime.command()
      async def uptime(self, ctx):
         """
         Check the bot's uptime
