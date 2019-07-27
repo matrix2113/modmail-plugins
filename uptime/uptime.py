@@ -3,6 +3,8 @@ from discord.ext import commands
 from datetime import datetime
 from core.models import PermissionLevel
 
+from core import checks
+
 class uptime(commands.Cog):
 
     def __init__(self, bot):
