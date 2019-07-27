@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+from discord import Embed
 from datetime import datetime
 from core.models import PermissionLevel
 from core.decorators import trigger_typing
