@@ -26,7 +26,6 @@ class uptime(commands.Cog):
         embed.description = desc
 
         embed.add_field(name="Uptime", value=self.bot.uptime)
-        embed.add_field(name="Plugin Creator", value="[`matrix2113`](https://github.com/matrix2113/modmail-plugins/)")
         await ctx.send(embed=embed)
 
 def setup(bot):
