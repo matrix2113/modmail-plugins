@@ -1,29 +1,33 @@
 import discord
 from discord.ext import commands
 from datetime import datetime
+from core.models import PermissionLevel
 
 class uptime(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
-        self.bot.launch_time = datetime.utcnow()
-        
-    @commands.group(name="Uptime", invoke_without_command=True)
-    async def testing(self, ctx):
-        """Uptime Command"""
+#        bot = self.context.bot
 
-        await ctx.send_help(ctx.command)
-        
-     @Uptime.command()
-     async def uptime(self, ctx):
-        """
-        Check the bot's uptime
-        """
-        delta_uptime = datetime.utcnow() - self.bot.launch_time
-        hours, remainder = divmod(int(delta_uptime.total_seconds()), 3600)
-        minutes, seconds = divmod(remainder, 60)
-        days, hours = divmod(hours, 24)
-        await ctx.send(f'Uptime is {days}d, {hours}h, {minutes}m, {seconds}s')
+    @commands.command()
+    @checks.has_permissions(PermissionLevel.REGULAR)
+    @trigger_typing
+    async def uptime(self, ctx):
+        """Shows information about this bot."""
+        embed = Embed(color=self.bot.main_color, timestamp=datetime.utcnow())
+        embed.set_author(name="Modmail - About", icon_url=self.bot.user.avatar_url)
+        embed.set_thumbnail(url=self.bot.user.avatar_url)
+
+        desc = "This is an open source Discord bot that serves as a means for "
+        desc += "members to easily communicate with server administrators in "
+        desc += "an organised manner."
+        embed.description = desc
+
+        embed.add_field(name="Uptime", value=self.bot.uptime)
+        embed.add_field(name="Latency", value=f"{self.bot.latency * 1000:.2f} ms")
+        embed.add_field(name="Version", value=f"`{self.bot.version}`")
+        embed.add_field(name="Author", value="[`kyb3r`](https://github.com/kyb3r)")
+        await ctx.send(embed=embed)
 
 def setup(bot):
     bot.add_cog(uptime(bot))
