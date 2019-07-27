@@ -16,20 +16,17 @@ class uptime(commands.Cog):
     @checks.has_permissions(PermissionLevel.REGULAR)
     @trigger_typing
     async def uptime(self, ctx):
-        """Shows information about this bot."""
+        """Shows uptime for the bot."""
         embed = Embed(color=self.bot.main_color, timestamp=datetime.utcnow())
-        embed.set_author(name="Modmail - About", icon_url=self.bot.user.avatar_url)
+        embed.set_author(name="Modmail - Uptime", icon_url=self.bot.user.avatar_url)
         embed.set_thumbnail(url=self.bot.user.avatar_url)
 
-        desc = "This is an open source Discord bot that serves as a means for "
-        desc += "members to easily communicate with server administrators in "
-        desc += "an organised manner."
+        desc = "This is an plugin command used to see how long your bot has been"
+        desc += "online since the last restart."
         embed.description = desc
 
         embed.add_field(name="Uptime", value=self.bot.uptime)
-        embed.add_field(name="Latency", value=f"{self.bot.latency * 1000:.2f} ms")
-        embed.add_field(name="Version", value=f"`{self.bot.version}`")
-        embed.add_field(name="Author", value="[`kyb3r`](https://github.com/kyb3r)")
+        embed.add_field(name="Plugin Creator", value="[`matrix2113`](https://github.com/matrix2113/modmail-plugins/)")
         await ctx.send(embed=embed)
 
 def setup(bot):
