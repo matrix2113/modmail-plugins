@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 from datetime import datetime
 from core.models import PermissionLevel
-
+from core.decorators import trigger_typing
 from core import checks
 
 class uptime(commands.Cog):
