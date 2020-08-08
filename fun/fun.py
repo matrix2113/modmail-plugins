@@ -173,6 +173,8 @@ class Fun(Cog):
         """Make the bot say something"""
         msg = escape(message,mass_mentions=True)
         await ctx.send(msg)
+        await ctx.message.delete()
+        
     @commands.command()
     async def reverse(self, ctx, *, text):
         """!txeT ruoY esreveR"""
