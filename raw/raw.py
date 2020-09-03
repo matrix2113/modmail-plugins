@@ -10,7 +10,7 @@ class EmbedRaw(commands.Cog):
 
     @commands.command()
     @checks.thread_only()
-    async def raw(self, ctx, message_id: int=None)
+    async def raw(self, ctx, message_id: int=None):
         if message_id is None:
             return await ctx.send("Please provide a message ID")
         
