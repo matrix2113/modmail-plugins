@@ -2,6 +2,8 @@ import discord
 
 from discord.ext import commands
 from datetime import datetime
+from core import checks
+from core.models import PermissionLevel
 
 
 class Banno(commands.Cog):
@@ -10,6 +12,7 @@ class Banno(commands.Cog):
         
         
     @commands.command()
+    @checks.has_permissions(PermissionLevel.OWNER)
     async def andybanno(self, ctx, reporter: int, reporting: int, *, reason: str):
         if not ctx.author.id == 332196248993923073:
             return await ctx.send("you do not have perms to invoke this plugin")
