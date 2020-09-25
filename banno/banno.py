@@ -14,7 +14,7 @@ class Banno(commands.Cog):
         
     @commands.command()
     @checks.has_permissions(PermissionLevel.OWNER)
-    async def andybanno(self, ctx, reporter: int, reporting: int, *, reason: str):
+    async def andybanno(self, ctx, reporter: int, reporting: int, *, reason: str)
         if not ctx.author.id == 332196248993923073:
             return await ctx.send("you do not have perms to invoke this plugin")
         ending_msg = """Reporter: {reporter}\nReporting: {reporting}\n\nReason: {reason}"""
