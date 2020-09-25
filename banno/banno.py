@@ -10,7 +10,7 @@ class Banno(commands.Cog):
         
         
     @commands.command()
-    async def andybanno(self, ctx, reporter: int, reporting: int, *, reason: str)
+    async def andybanno(self, ctx, reporter: int, reporting: int, *, reason: str):
         if not ctx.author.id == 332196248993923073:
             return
         ending_msg = """Reporter: {reporter}\nReporting: {reporting}\n\nReason: {reason}"""
