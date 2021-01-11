@@ -13,7 +13,7 @@ class LatencyTest(commands.Cog):
       print("i work")
       
     @tasks.loop(hours=1.0)
-    async def latency_return(self)
+    async def latency_return(self):
       chn = self.bot.fetch_channel(lgs)
       embed = discord.Embed(
           title="WS Latency",
