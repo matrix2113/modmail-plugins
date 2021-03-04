@@ -9,6 +9,7 @@ class EmbedRaw(commands.Cog):
 
 
     @commands.command()
+    @checks.has_permissions(PermissionLevel.SUPPORTER)
     async def raw(self, ctx, message_id: int=None):
         if message_id is None:
             return await ctx.send("Please provide a message ID")
